@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, abort
-from models import db, EmployeeModel
+from flasktrain.models import db, EmployeeModel
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
