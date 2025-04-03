@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Employee List{% endblock %}
+
+{% block content %}
+<div class="card">
+<div class="card-header d-flex justify-content-between align-items-center">
+<h4>Employee List</h4>
+<a href="/data/create" class="btn btn-success">Add Employee</a>
+</div>
+<div class="card-body">
+{% if employees %}
+<table class="table table-striped">
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Position</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for employee in employees %}
+<tr>
+<td>{{ employee.employee_id }}</td>
+<td>{{ employee.name }}</td>
+<td>{{ employee.age }}</td>
+<td>{{ employee.position }}</td>
+<td>
+<a href="/data/{{ employee.employee_id }}" class="btn btn-info btn-sm btn-space">View</a>
+<a href="/data/{{ employee.employee_id }}/update" class="btn btn-warning btn-sm btn-space">Edit</a>
+<a href="/data/{{ employee.employee_id }}/delete" class="btn btn-danger btn-sm">Delete</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<p class="text-center">No employees found. <a href="/data/create">Add an employee</a>.</p>
+{% endif %}
+</div>
+</div>
+{% endblock %}
